@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido confirmado — Inteligência Artificial para Crianças</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --deep-purple: #1E0A3C;
+    --purple: #2D1B69;
+    --violet: #6D28D9;
+    --lilac: #A78BFA;
+    --lilac-soft: #C4B5FD;
+    --lavender: #EDE9FE;
+    --page-bg: #E5DFFA;
+    --amber: #F59E0B;
+    --cream: #FEF3C7;
+    --ink: #111827;
+    --gray: #4B5563;
+    --white: #FFFFFF;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: var(--page-bg);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    line-height: 1.6;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 640px;
+    background: var(--deep-purple);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(30, 10, 60, 0.25);
+  }
+
+  /* ===== TOP BANNER ===== */
+  .banner {
+    background: var(--purple);
+    padding: 56px 40px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .banner .orb1 {
+    position: absolute; width: 320px; height: 320px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.5) 0%, transparent 70%);
+    top: -120px; right: -100px;
+  }
+  .banner .orb2 {
+    position: absolute; width: 240px; height: 240px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 70%);
+    bottom: -90px; left: -80px;
+  }
+
+  .check-badge {
+    position: relative;
+    z-index: 2;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .check-badge svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .robot-emoji {
+    position: relative;
+    z-index: 2;
+    font-size: 56px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .eyebrow {
+    position: relative;
+    z-index: 2;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--lilac);
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--lilac-soft);
+  }
+
+  .banner p {
+    position: relative;
+    z-index: 2;
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  /* ===== BODY ===== */
+  .body-section {
+    background: var(--lavender);
+    padding: 40px 40px 48px;
+  }
+
+  .order-name {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .order-name .label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 6px;
+  }
+  .order-name .product {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--purple);
+    line-height: 1.35;
+  }
+  .order-name .product em {
+    font-style: italic;
+    font-family: Georgia, serif;
+    color: var(--violet);
+  }
+
+  /* email notice box */
+  .email-box {
+    background: var(--white);
+    border: 2px solid var(--violet);
+    border-radius: 18px;
+    padding: 28px 28px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+  .email-box .icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
+  }
+  .email-box .text h2 {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--purple);
+    margin-bottom: 6px;
+  }
+  .email-box .text p {
+    font-size: 15px;
+    color: var(--gray);
+  }
+  .email-box .text p + p {
+    margin-top: 8px;
+  }
+  .email-box .text strong {
+    color: var(--ink);
+  }
+
+  /* tips box */
+  .tips-box {
+    background: var(--cream);
+    border-left: 6px solid var(--amber);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 28px;
+  }
+  .tips-box h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #92400E;
+    margin-bottom: 10px;
+  }
+  .tips-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tips-box li {
+    font-size: 14px;
+    color: #78350F;
+    padding-left: 26px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .tips-box li::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--amber);
+    font-size: 12px;
+  }
+
+  /* support note */
+  .support-note {
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .support-note strong {
+    color: var(--purple);
+  }
+
+  /* footer */
+  .footer {
+    text-align: center;
+    padding: 24px 40px 32px;
+    background: var(--lavender);
+    border-top: 1px solid rgba(109,40,217,0.12);
+  }
+  .footer p {
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .footer .brand {
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--violet);
+  }
+
+  @media (max-width: 480px) {
+    .banner { padding: 44px 24px 36px; }
+    .body-section { padding: 32px 24px 40px; }
+    h1 { font-size: 28px; }
+    .email-box { flex-direction: column; padding: 22px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="banner">
+      <div class="orb1"></div>
+      <div class="orb2"></div>
+
+      <div class="check-badge">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 13l4 4L19 7" stroke="#FCD34D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="robot-emoji">🤖</div>
+      <div class="eyebrow">Pedido confirmado</div>
+      <h1>Obrigado pela<br>sua <em>compra</em>!</h1>
+      <p>Seu pagamento foi confirmado com sucesso. Estamos muito felizes por você ter escolhido este material para a sua família.</p>
+    </div>
+
+    <div class="body-section">
+
+      <div class="order-name">
+        <div class="label">Você adquiriu</div>
+        <div class="product">Inteligência Artificial <em>para Crianças</em><br>— Um Guia Divertido</div>
+      </div>
+
+      <div class="email-box">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <rect x="2" y="4" width="20" height="16" rx="2.5" stroke="#6D28D9" stroke-width="1.8"/>
+            <path d="M3 6.5L11.0717 12.5448C11.6168 12.9483 12.3832 12.9483 12.9283 12.5448L21 6.5" stroke="#6D28D9" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="text">
+          <h2>Confira seu e-mail</h2>
+          <p>Enviamos uma mensagem com as <strong>instruções para baixar o seu Guia</strong> para o e-mail informado durante a compra.</p>
+          <p>Caso não encontre na caixa de entrada em alguns minutos, dê uma olhadinha na pasta de <strong>spam ou promoções</strong> — às vezes ele se esconde por lá. 😉</p>
+        </div>
+      </div>
+
+      <div class="tips-box">
+        <h3>🚀 Enquanto isso, prepare-se para a leitura</h3>
+        <ul>
+          <li>O ebook foi pensado para ser lido em família — separe um momento tranquilo com seu filho ou filha</li>
+          <li>Cada capítulo tem uma "Nota para os Pais" com dicas para guiar a conversa</li>
+          <li>Os projetos práticos do último capítulo são ótimos para um fim de semana especial</li>
+        </ul>
+      </div>
+
+      <p class="support-note">
+        Tem alguma dúvida ou não recebeu o e-mail?<br>
+        Entre em contato e responderemos o mais rápido possível. <strong>Boa leitura! 🌟</strong>
+      </p>
+
+    </div>
+
+    <div class="footer">
+      <p>✨ Aprenda · Crie · Explore · Use com Segurança ✨</p>
+      <div class="brand">Inteligência Artificial para Crianças — Um Guia Divertido</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
